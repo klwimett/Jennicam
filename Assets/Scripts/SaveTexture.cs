@@ -14,7 +14,7 @@ public class SaveTexture : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		texture = GetComponent<SkinnedMeshRenderer>().material.mainTexture as Texture2D;
+		texture = GetComponent<Renderer>().material.mainTexture as Texture2D;
 
 		if(!save) return;
 
@@ -22,7 +22,7 @@ public class SaveTexture : MonoBehaviour {
 		
 		var jpg = texture.EncodeToJPG();
 
-		File.WriteAllBytes(Application.dataPath+"/output.jpg",jpg);
+		File.WriteAllBytes(Application.dataPath+"/"+gameObject.name+".jpg",jpg);
 
 		Debug.Log("Finished!");
 	}
